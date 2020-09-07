@@ -8,4 +8,8 @@ class TodosController < ApplicationController
     @todo.save
     redirect_to @todo
   end
+
+  def show
+    @todo = Todo.find(params[:id])
+  end
 end
