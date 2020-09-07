@@ -10,7 +10,7 @@ class TodosController < ApplicationController
     @todo = Todo.new params.require(:todo).permit :description, :status
 
     @todo.save
-    redirect_to @todo
+    redirect_to action: 'index'
   end
 
   def show
