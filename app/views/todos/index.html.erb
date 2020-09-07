@@ -1,6 +1,11 @@
 <h2>Todo List</h2>
 
-<%= link_to 'New',  new_todo_path(@todos) %>
+<%= form_with scope: :todo, url: todos_path, local: true do |form| %>
+  <%= form.text_field :description, placeholder: 'Description' %>
+  <%= form.submit 'Add' %>
+<% end %>
+
+<br>
 <table>
   <tr>
     <th>Description</th>
@@ -11,7 +16,7 @@
     <tr>
       <td><%= todo.description %></td>
       <td><%= check_box_tag todo.status %></td>
-      <td><%= link_to 'Destroy', todo_path(todo),
+      <td><%= link_to 'Remove', todo_path(todo),
         method: :delete,
         data: { confim: 'Are you sure?' }%>
       </td>
