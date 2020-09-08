@@ -1,6 +1,12 @@
 <h2>Todo List</h2>
 
-<%= form_with scope: :todo, url: todos_path, local: true do |form| %>
+<% if alert %>
+  <%= alert %>
+  <br>
+<% end %>
+<br>
+
+<%= form_with scope: :todo, url: todos_path do |form| %>
   <%= form.text_field :description, placeholder: 'Description' %>
   <%= form.submit 'Add' %>
 <% end %>

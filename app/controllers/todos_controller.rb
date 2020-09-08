@@ -7,10 +7,13 @@ class TodosController < ApplicationController
   end
   
   def create
-    @todo = Todo.new params.require(:todo).permit :description, :status
+    @todo = Todo.new params.require(:todo).permit :description
 
-    @todo.save
-    redirect_to action: 'index'
+    if @todo.save
+      redirect_to action: 'index'
+    else
+      redirect_to({ action: 'index' }, alert: 'Invalid data')
+    end
   end
 
   def show
